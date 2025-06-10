@@ -42,14 +42,12 @@
                     humanScore,
                     computerScore,
                 );
-                console.log(`Your score: ${humanScore}`);
-                console.log(`Computer score: ${computerScore}`);
+                
+                // Update the score in the HTML
                 if (runningScoreElement) {
                     runningScoreElement.innerText =
                         `Your score: ${humanScore}; Computer score: ${computerScore}`;
                 }
             });
     });
-    console.log(`Your score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
 })();
