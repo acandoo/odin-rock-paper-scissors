@@ -15,14 +15,11 @@
 
         switch (humanChoice.toLowerCase()) {
             case winOver[computerChoice]:
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 humanScore++;
                 break;
             case computerChoice:
-                console.log("It's a tie!");
                 break;
             default:
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 computerScore++;
         }
         return [humanScore, computerScore];
@@ -32,7 +29,6 @@
     let computerScore = 0;
     const runningScoreElement = document.getElementById("score");
     ["rock", "paper", "scissors"].forEach((choice) => {
-        console.log(choice);
         document
             .getElementById(choice)
             ?.addEventListener("click", () => {
