@@ -35,9 +35,13 @@ const playGame = (() => {
     //  to make it even more overkill:
     //  let [humanScore, computerScore] = new Array(2).fill(0);
     let humanScore = computerScore = 0;
-    for (const i of Array(5).keys()) {
-        [humanScore, computerScore] = playRound(getHumanChoice(), getComputerChoice(), humanScore, computerScore);
-    }
+    ["rock", "paper", "scissors"].forEach((choice) => {
+        document
+            .getElementById(choice)
+            .addEventListener("click", () => {
+                [humanScore, computerScore] = playRound(choice, getComputerChoice(), humanScore, computerScore);
+            });
+    });
     console.log(`Your score: ${humanScore}`);
     console.log(`Computer score: ${computerScore}`);
 })();
