@@ -1,47 +1,46 @@
 // my very overkill solution to rock paper scissors, please don't reference this!
-
-function getComputerChoice() {
-    const results = ["rock", "paper", "scissors"];
-    const random = Math.floor(Math.random() * 3);
-    return results[random];
-}
-
-// python's got nothing against this
-const getHumanChoice = () => prompt("Enter choice:");
-
-function playRound(humanChoice, computerChoice, humanScore, computerScore) {
-    const winOver = {
-        rock: "paper",
-        paper: "scissors",
-        scissors: "rock"
+(function () {
+    function getComputerChoice() {
+        var results = ["rock", "paper", "scissors"];
+        var random = Math.floor(Math.random() * 3);
+        return results[random];
     }
-    
-    switch (humanChoice.toLowerCase()) {
-        case winOver[computerChoice]:
-            console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-            humanScore++;
-            break;
-        case computerChoice:
-            console.log("It's a tie!");
-            break;
-        default:
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-            computerScore++;
+    function playRound(humanChoice, computerChoice, humanScore, computerScore) {
+        var winOver = {
+            rock: "paper",
+            paper: "scissors",
+            scissors: "rock",
+        };
+        switch (humanChoice.toLowerCase()) {
+            case winOver[computerChoice]:
+                console.log("You win! ".concat(humanChoice, " beats ").concat(computerChoice));
+                humanScore++;
+                break;
+            case computerChoice:
+                console.log("It's a tie!");
+                break;
+            default:
+                console.log("You lose! ".concat(computerChoice, " beats ").concat(humanChoice));
+                computerScore++;
+        }
+        return [humanScore, computerScore];
     }
-    return [humanScore, computerScore];
-}
-
-const playGame = (() => {
     //  to make it even more overkill:
-    //  let [humanScore, computerScore] = new Array(2).fill(0);
-    let humanScore = computerScore = 0;
-    ["rock", "paper", "scissors"].forEach((choice) => {
-        document
-            .getElementById(choice)
-            .addEventListener("click", () => {
-                [humanScore, computerScore] = playRound(choice, getComputerChoice(), humanScore, computerScore);
-            });
+    var humanScore, computerScore = 0;
+    var runningScoreElement = document.getElementById("score");
+    ["rock", "paper", "scissors"].forEach(function (choice) {
+        var _a;
+        console.log(choice);
+        (_a = document
+            .getElementById(choice)) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+            var _a;
+            _a = playRound(choice, getComputerChoice(), humanScore, computerScore), humanScore = _a[0], computerScore = _a[1];
+            if (runningScoreElement) {
+                runningScoreElement.innerText =
+                    "Your score: ".concat(humanScore, "; Computer score: ").concat(computerScore);
+            }
+        });
     });
-    console.log(`Your score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
+    console.log("Your score: ".concat(humanScore));
+    console.log("Computer score: ".concat(computerScore));
 })();
