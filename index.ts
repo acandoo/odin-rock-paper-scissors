@@ -42,11 +42,20 @@
                     humanScore,
                     computerScore,
                 );
-                
+
                 // Update the score in the HTML
                 if (runningScoreElement) {
-                    runningScoreElement.innerText =
-                        `Your score: ${humanScore}; Computer score: ${computerScore}`;
+                    if (humanScore >= 5 || computerScore >= 5) {
+                        if (humanScore > computerScore) {
+                            runningScoreElement.innerText = "You win the game!";
+                        } else if (computerScore > humanScore) {
+                            runningScoreElement.innerText =
+                                "Computer wins the game!";
+                        }
+                    } else {
+                        runningScoreElement.innerText =
+                            `Your score: ${humanScore}; Computer score: ${computerScore}`;
+                    }
                 }
             });
     });

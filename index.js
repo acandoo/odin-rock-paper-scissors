@@ -36,14 +36,22 @@
             .getElementById(choice)) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
             var _a;
             _a = playRound(choice, getComputerChoice(), humanScore, computerScore), humanScore = _a[0], computerScore = _a[1];
-            console.log("Your score: ".concat(humanScore));
-            console.log("Computer score: ".concat(computerScore));
+            // Update the score in the HTML
             if (runningScoreElement) {
-                runningScoreElement.innerText =
-                    "Your score: ".concat(humanScore, "; Computer score: ").concat(computerScore);
+                if (humanScore >= 5 || computerScore >= 5) {
+                    if (humanScore > computerScore) {
+                        runningScoreElement.innerText = "You win the game!";
+                    }
+                    else if (computerScore > humanScore) {
+                        runningScoreElement.innerText =
+                            "Computer wins the game!";
+                    }
+                }
+                else {
+                    runningScoreElement.innerText =
+                        "Your score: ".concat(humanScore, "; Computer score: ").concat(computerScore);
+                }
             }
         });
     });
-    console.log("Your score: ".concat(humanScore));
-    console.log("Computer score: ".concat(computerScore));
 })();
