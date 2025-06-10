@@ -26,7 +26,8 @@
         return [humanScore, computerScore];
     }
     //  to make it even more overkill:
-    var humanScore, computerScore = 0;
+    var humanScore = 0;
+    var computerScore = 0;
     var runningScoreElement = document.getElementById("score");
     ["rock", "paper", "scissors"].forEach(function (choice) {
         var _a;
@@ -35,6 +36,8 @@
             .getElementById(choice)) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
             var _a;
             _a = playRound(choice, getComputerChoice(), humanScore, computerScore), humanScore = _a[0], computerScore = _a[1];
+            console.log("Your score: ".concat(humanScore));
+            console.log("Computer score: ".concat(computerScore));
             if (runningScoreElement) {
                 runningScoreElement.innerText =
                     "Your score: ".concat(humanScore, "; Computer score: ").concat(computerScore);

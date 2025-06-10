@@ -28,7 +28,8 @@
         return [humanScore, computerScore];
     }
     //  to make it even more overkill:
-    let humanScore, computerScore = 0;
+    let humanScore = 0;
+    let computerScore = 0;
     const runningScoreElement = document.getElementById("score");
     ["rock", "paper", "scissors"].forEach((choice) => {
         console.log(choice);
@@ -41,6 +42,8 @@
                     humanScore,
                     computerScore,
                 );
+                console.log(`Your score: ${humanScore}`);
+                console.log(`Computer score: ${computerScore}`);
                 if (runningScoreElement) {
                     runningScoreElement.innerText =
                         `Your score: ${humanScore}; Computer score: ${computerScore}`;
